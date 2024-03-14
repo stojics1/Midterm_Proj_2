@@ -10,7 +10,7 @@ const courseslist = "https://backend-6cat.onrender.com/Courses";
 
 function App() {
   
-  const [CourseData, setCourseData] = useState([])
+  const [coursedata, setCourseData] = useState([])
   useEffect(()=>{
     try {
           const data = async() =>{
@@ -39,7 +39,7 @@ function App() {
         placeholder = 'Search Class'; 
       </SearchBar>
       <div className='CoursesTable'>
-        <calssesTable CourseData={setCourseData}></calssesTable>
+        <calssesTable courses={setCourseData}></calssesTable>
       </div>
   </div>
   );
