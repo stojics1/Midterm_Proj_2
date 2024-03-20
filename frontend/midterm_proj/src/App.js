@@ -5,32 +5,37 @@ import axios from "axios";
 import calssesTable from './components/coursestable/coursestable.components';
 //import calse from './components/enrolledtable/enrolledtable.components';
 //import Courses from '../../../backend/models/courses.models';
-const studentslist = "https://backend-6cat.onrender.com/Students";
-const courseslist = "https://backend-6cat.onrender.com/Courses";
+const studentslist = "http://localhost:8000/students";
+const courseslist = "http://localhost:8000/courses";
+
+
 
 function App() {
-  
-  const [coursedata, setCourseData] = useState([])
-  useEffect(()=>{
-    try {
-          const data = async() =>{
-            
-            const waiting = await axios(courseslist);
-            
-            setCourseData(waiting.data);
-          }
 
-    } catch (error) {
-        console.log(error);
-    }
-  },[])
-
-
-
+  const [data,setCourseData] = useState([]);
+  const [studentData, setStudentsData] =  useState([]);
   const [filteredCourses, setFilteredCourses] = useState([]);
   const [SearchInput,  setSearchInput] = useState("");
   const [filteredStudents, setFilteredStudents] = useState([]);
   
+  const getCourseData = async ()=>{
+      const response = await axios.get(courseslist);
+      setCourseData(response.data);
+  };
+
+  useEffect(()=>{
+      getCourseData();
+  }, []);
+
+  const getStudentsData = async () =>{
+      const response = await axios.get(studentslist);
+      setStudentsData();
+  };
+
+  useEffect(() => {
+      getStudentsData();
+      }, []);
+
 
 
   return (

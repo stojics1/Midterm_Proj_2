@@ -1,7 +1,7 @@
 import coursesTable from "../enrolledtable/enrolledtable.components";
 import "./coursestable.styles.css";
 
-export const calssesTable = ({courses, enrollment, handleInput}) =>{
+export const classesTable = ({courses, enrollment, handleInput}) =>{
     //const {course_id, CourseName, TimeOfDay } = WOWSTUFF;
 
 
@@ -23,4 +23,4 @@ export const calssesTable = ({courses, enrollment, handleInput}) =>{
 )
         };
 
-export default calssesTable;
+export default classesTable;

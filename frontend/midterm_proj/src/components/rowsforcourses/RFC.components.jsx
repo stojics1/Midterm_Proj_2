@@ -1,13 +1,26 @@
 import { Button } from "react-bootstrap/lib/InputGroup";
 
-export const RFC = ({course, enrolled }) => {
-    const {course_id, CourseName, TimeOfDay} = course;
-    variant="enrolled", className="w-100 fs-5 mb-2";
+import Button from "react-bootstrap/Button";
 
-   return(
-    <tr>
+export const coursesTable = ({course, enrolled, handlerClick}) => {
+    const {id, CourseName, TimeOfDay } = course ;
+    let variant = "primary", title = "Enroll";
+    if (enrolled){
+        variant = "danger"; title="UnEnroll";
+    }
+    return(
+        <div className="CoursesTable">
+            <table>
+                <thead>
+                <tr>Course Id</tr>
+                <tr>Course Name</tr>
+                <tr>Time Of Day</tr>
+                <tr>Enroll </tr>
+                <tr><Button id={id} variant={variant} onClick={handlerClick}>{title}</Button> </tr>
+                </thead>
+            </table>
+        </div>
+    )
+};
 
-    </tr>
-   );
-
-}
+export default courseRow;
