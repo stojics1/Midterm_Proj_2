@@ -4,6 +4,7 @@ import axios from "axios";
 import {useTable} from "react-table";
 import {SearchBar} from "../searchbar/searchbar.components";
 import Button from "react-bootstrap/Button";
+import 'bootstrap/dist/css/bootstrap.min.css';
 //import {useTableSelectionCheckbox} from 'react-aria';
 const courseslist = "http://localhost:8000/courses";
 
@@ -114,8 +115,9 @@ export function CourseTable() {
                         <tr {...row.getRowProps()}>
                             {row.cells.map((cell) => (
                                 <td {...cell.getCellProps()}> {cell.render("Cell")}</td>
-                            ))}
-                            <Button variant={"Success"} >{"Enroll"}</Button>
+                            )) }
+                            <Button variant={"success"}>Enroll</Button>{' '}
+
                         </tr>
                     )
                 })}
