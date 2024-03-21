@@ -43,24 +43,24 @@ export function studentTable() {
             })
             setData(newData)
         }}
-    function HandleThatShit(event){
-           let newData = [];
-           if (checked === true){
-               useEffect(() => {
-                   axios.get(studentlist)
-                       .then(data => setData(data.data))
-                       .catch(err => console.log(err))
-
-               }, [])
-
-               data.map((enrolled, row.student_id) => {
-                  return enrolled.cells,map((){
-                     headerName,
-                     ...rest
-                   })
-               })
-           }
-    }
+    // function HandleThatShit(event){
+    //        let newData = [];
+    //        if (checked === true){
+    //            useEffect(() => {
+    //                axios.get(studentlist)
+    //                    .then(data => setData(data.data))
+    //                    .catch(err => console.log(err))
+    //
+    //            }, [])
+    //
+    //            data.map((enrolled, row.student_id) => {
+    //               return enrolled.cells,map((){
+    //                  headerName,
+    //                  ...rest
+    //                })
+    //            })
+    //        }
+    // }
 
     const columns= React.useMemo(() => [
 
