@@ -10,10 +10,14 @@ import {DropdownItem} from "react-bootstrap";
 import lolCheck, {CheckBox} from "../checkbox/checkbox.components";
 import {Form} from "react-bootstrap";
 import {StrictMode} from "react";
+import eventHandler from "bootstrap/js/src/dom/event-handler";
+import {coursesTable} from "../rowsforcourses/RFC.components";
 const studentlist = "http://localhost:8000/students";
 
 export function studentTable() {
+    const [courseData, setCourseData]= useState()
     const [data,setData] = useState([])
+    const [filteredCourses, setFilteredCourses] = useState()
     const [records, setRecords] = useState(data)
     useEffect(() => {
         axios.get(studentlist)
@@ -21,6 +25,8 @@ export function studentTable() {
             .catch(err => console.log(err))
 
     }, [])
+
+
     function showStudents(event){
         let newData = [];
         if (event.target.value === ''){
@@ -37,6 +43,25 @@ export function studentTable() {
             })
             setData(newData)
         }}
+    function HandleThatShit(event){
+           let newData = [];
+           if (checked === true){
+               useEffect(() => {
+                   axios.get(studentlist)
+                       .then(data => setData(data.data))
+                       .catch(err => console.log(err))
+
+               }, [])
+
+               data.map((enrolled, row.student_id) => {
+                  return enrolled.cells,map((){
+                     headerName,
+                     ...rest
+                   })
+               })
+           }
+    }
+
     const columns= React.useMemo(() => [
 
 
@@ -49,26 +74,7 @@ export function studentTable() {
             Header: "Name",
             accessor: "Name"
         },
-        // {
-        //     Header: "Course ID",
-        //     accessor: "course_id"
-        // },
-        // {
-        //     Header:"Course Name",
-        //     accessor: "CourseName"
-        // },
-        // {
-        //     Header:"Deparment",
-        //     accessor: "Department"
-        // },
-        // {
-        //     Header:"Time of Day",
-        //     accessor: "TimeOfDay"
-        // },
-        //     {
-        //         Header:"Enrolled",
-        //         accessor: "enrolled"
-        //     },
+
 
 
         ], []
@@ -108,6 +114,8 @@ export function studentTable() {
                             <Form.Check
                                 name="group1"
                                 type={'radio'}
+                                checked={false}
+                                onClick={HanldeThatShit}
                             />
 
 
