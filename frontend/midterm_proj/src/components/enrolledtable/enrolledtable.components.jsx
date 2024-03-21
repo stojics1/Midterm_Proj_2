@@ -1,12 +1,15 @@
 import * as React from "react";
-import {useEffect, useState} from "react";
+import {useEffect, useState, hooks} from "react";
 import axios from "axios";
-import {useTable} from "react-table";
+import {useTable, useRowSelect} from "react-table";
 import Button from "react-bootstrap";
 import CourseTable from "../coursestable/coursestable.components";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import {DropdownItem} from "react-bootstrap";
+import lolCheck, {CheckBox} from "../checkbox/checkbox.components";
+import {Form} from "react-bootstrap";
+import {StrictMode} from "react";
 const studentlist = "http://localhost:8000/students";
 
 export function studentTable() {
@@ -36,9 +39,11 @@ export function studentTable() {
         }}
     const columns= React.useMemo(() => [
 
+
         {
             Header: "Student Id",
-            accessor: "student_id"
+            accessor: "student_id",
+
         },
         {
             Header: "Name",
@@ -70,35 +75,50 @@ export function studentTable() {
     );
 
 
-    const {getTableProps, getTableBodyProps,  headerGroups, rows, prepareRow} = useTable({columns, data})
+    const {getTableProps, getTableBodyProps,  headerGroups, rows, prepareRow, selectedFlatRows} =
+        useTable({columns, data})
 
 
     return(
         <div className="tableContainer">
 
-            <table {...getTableProps()}>
+            <table {...getTableProps()} aria-selected="true">
+
                 <thead>
                 {headerGroups.map((headerGroup) => (
+
                     <tr {...headerGroup.getHeaderGroupProps()}>
                         {headerGroup.headers.map((column) => (
                             <th{...column.getHeaderProps()}>
                                 {column.render("Header")}
                             </th>))}
-                    </tr>))}
+                    </tr> ))}
+
                 </thead>
                 <tbody {...getTableBodyProps()}>
                 {rows.map((row) => {
                     prepareRow(row);
                     return (
+
                         <tr {...row.getRowProps()}>
+
                             {row.cells.map((cell) => (
                                 <td {...cell.getCellProps()}> {cell.render("Cell")}</td>
                             ))}
+                            <Form.Check
+                                name="group1"
+                                type={'radio'}
+                            />
+
+
                         </tr>
+
                     )
                 })}
                 </tbody>
             </table>
-        </div>);
+
+        </div>
+    );
 }
 export default studentTable;

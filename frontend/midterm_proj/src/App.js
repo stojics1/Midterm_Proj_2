@@ -3,7 +3,7 @@ import { SearchBar } from './components/searchbar/searchbar.components';
 import  * as React  from 'react';
 import CourseTable from "./components/coursestable/coursestable.components";
 import {studentTable} from "./components/enrolledtable/enrolledtable.components";
-import {useEffect, useMemo, useState} from "react";
+import {StrictMode, useEffect, useMemo, useState} from "react";
 import axios from "axios";
 import {useTable} from 'react-table';
 import Dropdown from "react-bootstrap/Dropdown";
@@ -108,9 +108,11 @@ function App() {
         <div>
         {CourseTable()}
       </div>
+
         <div>
             {studentTable()}
         </div>
+
   </div>
   );
 

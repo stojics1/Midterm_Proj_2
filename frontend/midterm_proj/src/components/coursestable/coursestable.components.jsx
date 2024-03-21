@@ -50,34 +50,39 @@ export function CourseTable() {
                 return row.CourseName.toLowerCase().includes(event.target.value.toLowerCase())
             })
             setData(newData)
+
         }
     }
+    const variant = "success", placeHolder = "Enroll";
+    // function ClickHandler(event){
+    //     const variant = "danger", placeHolder = "Uneroll";
+    // }
     const columns= React.useMemo(() => [
 
             {
                 Header: "Course ID",
                 accessor: "course_id",
-                sortable: true
+
             },
             {
                 Header:"Course Name",
                 accessor: "CourseName",
-                sortable: true
+
             },
             {
                 Header:"Deparment",
                 accessor: "Department",
-                sortable: true
+
             },
             {
                 Header:"Time of Day",
                 accessor: "TimeOfDay",
-                sortable: true
+
             },
-        {
-            Header:"Enroll",
-            accessor:"Enroll"
-        },
+            {
+                Header:"Enroll",
+                accessor:"Enroll"
+            },
             // {
             //     Header:"Enroll",
             //     accessor:"Enroll",
@@ -89,7 +94,7 @@ export function CourseTable() {
 
     const {getTableProps, getTableBodyProps,  headerGroups, rows, prepareRow} =
         useTable({columns, data})
-    let variant = "success"
+
     return (
 
         <div className="tableContainer">
@@ -116,7 +121,7 @@ export function CourseTable() {
                             {row.cells.map((cell) => (
                                 <td {...cell.getCellProps()}> {cell.render("Cell")}</td>
                             )) }
-                            <Button variant={"success"}>Enroll</Button>{' '}
+                            <Button variant={variant} >{placeHolder}</Button>{' '}
 
                         </tr>
                     )
