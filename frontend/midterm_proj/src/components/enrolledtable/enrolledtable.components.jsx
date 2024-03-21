@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 
 
-export const coursesTable = ({course, enrolled, handlerClick}) => {
+export const studentTable = ({course, enrolled, handlerClick}) => {
     const {id, CourseName, TimeOfDay } = course ;
     let variant = "primary", title = "Enroll";
     if (enrolled){
