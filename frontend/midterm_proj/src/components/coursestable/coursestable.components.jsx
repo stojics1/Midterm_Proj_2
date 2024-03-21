@@ -115,6 +115,7 @@ export function CourseTable() {
                             {row.cells.map((cell) => (
                                 <td {...cell.getCellProps()}> {cell.render("Cell")}</td>
                             ))}
+                            <Button variant={"Success"} >{"Enroll"}</Button>
                         </tr>
                     )
                 })}
