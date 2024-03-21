@@ -1,8 +1,8 @@
-/*.tableContainer{*/
-/*    background-color: lightgrey;*/
-/*    width: fit-content;*/
-/*    border-radius: 20px;*/
-/*    height: 244px;*/
-/*    padding: 0 10px 10px 10px;*/
-/*    overflow: scroll;*/
-/*}*/
+.tableContainer{
+    background-color: lightgrey;
+    width: fit-content;
+    border-radius: 20px;
+    height: 244px;
+    padding: 0 10px 10px 10px;
+    overflow: scroll;
+}
